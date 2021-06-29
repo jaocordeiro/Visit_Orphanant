@@ -6,7 +6,10 @@
   #page-orphanage main {
     flex: 1;
   }
-  
+  .navbar {
+    background: #5ac3ca;  
+  }
+
   .orphanage-details {
     width: 700px;
     margin: 64px auto;
