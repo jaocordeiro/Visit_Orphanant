@@ -1,10 +1,22 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity} from 'react-native';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-import mapMarker from '../images/map-marker.png';
 import {Feather} from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
+import mapMarker from '../images/map-marker.png';
+
 
 export default function OrphanagesMap () {
+  const navigation = useNavigation ();
+
+  function handleNavigateToOrphanageDetails() {
+    navigation.navigate('OrphanageDetails');
+  }
+
+  function handleNavigateToCreateOrphanage() {
+    navigation.navigate('SelectMapPosition');
+  }
+
     return (
         <View style={styles.container}>
       <MapView 
@@ -28,7 +40,7 @@ export default function OrphanagesMap () {
             longitude: -52.6298881,
           }}
         >
-          <Callout tooltip onPress={()=> {}}>
+          <Callout tooltip onPress={()=> {handleNavigateToOrphanageDetails}}>
             <View style={styles.calloutContainer}>
               <Text style={styles.calloutText}>Lar das Criancas</Text>
             </View>
@@ -38,7 +50,7 @@ export default function OrphanagesMap () {
 
       <View style={styles.footer}>
         <Text style={styles.footerText}>2 orfanatos encontrados</Text>
-          <TouchableOpacity style={styles.createOrphanageButton} onPress={() => {}}>
+          <TouchableOpacity style={styles.createOrphanageButton} onPress={() => {handleNavigateToCreateOrphanage}}>
           <Feather name="plus" size={20} color="#FFF" />
           </TouchableOpacity>
       </View>
